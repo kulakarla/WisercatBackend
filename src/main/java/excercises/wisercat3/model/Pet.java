@@ -18,17 +18,12 @@ public class Pet {
     @Column(name = "NAME", length = 100)
     private String name;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "ANIMAL_ID")
-    private Animal animal;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "COLOR_ID")
-    private Color color;
+    private String animal;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "COUNTRY_ID")
-    private Country country;
+    private String color;
+
+    private String country;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_ID")
@@ -58,29 +53,6 @@ public class Pet {
         this.name = name;
     }
 
-    public Animal getAnimal() {
-        return animal;
-    }
-
-    public void setAnimal(Animal animal) {
-        this.animal = animal;
-    }
-
-    public Color getColor() {
-        return color;
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
-    public Country getCountry() {
-        return country;
-    }
-
-    public void setCountry(Country country) {
-        this.country = country;
-    }
 
     public User getUser() {
         return user;
@@ -90,4 +62,15 @@ public class Pet {
         this.user = user;
     }
 
+    public String getAnimal() {
+        return animal;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public String getCountry() {
+        return country;
+    }
 }

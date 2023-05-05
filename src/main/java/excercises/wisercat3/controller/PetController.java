@@ -1,13 +1,11 @@
 package excercises.wisercat3.controller;
 
+import excercises.wisercat3.dto.PetDTO;
 import excercises.wisercat3.model.Pet;
 import excercises.wisercat3.service.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,9 +20,10 @@ public class PetController {
         this.petService = petService;
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping
-    public ResponseEntity<List<Pet>> getPets(){
-        List<Pet> pets = petService.getPets();
+    public ResponseEntity<List<PetDTO>> getPets(){
+        List<PetDTO> pets = petService.getPets();
         if (pets.size() == 0){
             return ResponseEntity.notFound().build();
         }else{

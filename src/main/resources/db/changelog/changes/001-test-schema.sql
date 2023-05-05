@@ -2,9 +2,9 @@ CREATE TABLE pets (
   id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   id_code UUID DEFAULT RANDOM_UUID(),
   name VARCHAR(100),
-  animal_id INT,
-  color_id INT,
-  country_id INT,
+  animal VARCHAR(100),
+  color VARCHAR(100),
+  country VARCHAR(100),
   user_id INT
 );
 
@@ -33,5 +33,5 @@ INSERT INTO users(username, password) VALUES ('hei', 'sinaseal');
 INSERT INTO countries(name) VALUES ('norway');
 INSERT INTO colors(name) VALUES ('red');
 INSERT INTO animals(name) VALUES ('dog');
-INSERT INTO pets(name, animal_id, color_id, country_id, user_id) VALUES ('kuki', 1, 1, 1, 1);
-INSERT INTO pets(name, animal_id, color_id, country_id, user_id) VALUES ('muki', 1, 1, 1, 1);
+INSERT INTO pets(name, animal, color, country, user_id) VALUES ('kuki', 'dog', 'red', 'eesti', 1);
+INSERT INTO pets(name, animal, color, country, user_id) VALUES ('muki', 'cat', 'blue', 'soome', 1);
