@@ -1,3 +1,3 @@
-INSERT INTO users(username, password) VALUES ('Petlover321', 'verysafepassword');
-INSERT INTO users(username, password) VALUES ('turtleDude', 'lighter481');
-INSERT INTO users(username, password) VALUES ('skipper2', 'stone25');
+INSERT INTO users(username, password) VALUES ('Petlover321', '$2a$12$v/rGtP.7yYVbCfKoRET4keq0uUr0KIVjN90HatUHjVGZUpuUpjfjy'); //verysafepassword
+INSERT INTO users(username, password) VALUES ('turtleDude', ' $2a$12$Mdh9Oc5IyYPMM/u1ZEHg7.sK4W7IWIw.5XGbZZKoKQMsdBpQLf.22 '); //lighter481
+INSERT INTO users(username, password) VALUES ('skipper2', ' $2a$12$qmjp1rGtRelZk49R5RKOBeHnfgw8qXLGHtA3te.F9KLA3ssTHP/Xe '); //stone25
