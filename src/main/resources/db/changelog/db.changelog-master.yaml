@@ -1,3 +1,13 @@
 databaseChangeLog:
   - include:
-      file: classpath:/db/changelog/changes/001-test-schema.sql
+      file: classpath:/db/changelog/changes/1-table-schemas.sql
+  - include:
+      file: classpath:/db/changelog/changes/2-countries-pop.sql
+  - include:
+      file: classpath:/db/changelog/changes/3-animal-pop.sql
+  - include:
+      file: classpath:/db/changelog/changes/4-color-pop.sql
+  - include:
+      file: classpath:/db/changelog/changes/5-users-pop.sql
+  - include:
+      file: classpath:/db/changelog/changes/6-pets-pop.sql

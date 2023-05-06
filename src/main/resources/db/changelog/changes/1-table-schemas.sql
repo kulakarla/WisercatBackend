@@ -20,7 +20,8 @@ CREATE TABLE colors (
 
 CREATE TABLE countries (
  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
- name VARCHAR(100)
+ name VARCHAR(100),
+ ISO VARCHAR(2)
 );
 
 CREATE TABLE users (
@@ -28,10 +29,3 @@ CREATE TABLE users (
  username VARCHAR(100),
  password VARCHAR(100)
 );
-
-INSERT INTO users(username, password) VALUES ('hei', 'sinaseal');
-INSERT INTO countries(name) VALUES ('norway');
-INSERT INTO colors(name) VALUES ('red');
-INSERT INTO animals(name) VALUES ('dog');
-INSERT INTO pets(name, animal, color, country, user_id) VALUES ('kuki', 'dog', 'red', 'eesti', 1);
-INSERT INTO pets(name, animal, color, country, user_id) VALUES ('muki', 'cat', 'blue', 'soome', 1);

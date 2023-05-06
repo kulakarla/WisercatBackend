@@ -13,6 +13,9 @@ public class Country {
     @Column(name = "NAME", length = 100)
     private String name;
 
+    @Column(name = "ISO", length = 2)
+    private String ISO;
+
     public Integer getId() {
         return id;
     }
