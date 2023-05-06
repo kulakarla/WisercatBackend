@@ -1,9 +1,11 @@
+
 package excercises.wisercat3.security;
 
 
 import excercises.wisercat3.security.jwt.AuthEntryPointJwt;
 import excercises.wisercat3.security.jwt.AuthTokenFilter;
 import excercises.wisercat3.service.UserDetailsServiceImpl;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -12,12 +14,15 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -28,6 +33,7 @@ import java.util.Collections;
 
 @CrossOrigin(origins = "*")
 @Configuration
+@EnableWebSecurity
 public class WebSecurityConfig  {
 
 
@@ -69,8 +75,10 @@ public class WebSecurityConfig  {
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeHttpRequests().requestMatchers("/api/pet/**").permitAll()
-                .requestMatchers("/api/auth/login/**").permitAll()
+                .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/h2-ui/**").permitAll()
+                .requestMatchers("/api/**").permitAll()
+                .requestMatchers("/**").permitAll()
                 .anyRequest().authenticated();
 
         http.headers().frameOptions().sameOrigin();
@@ -79,10 +87,14 @@ public class WebSecurityConfig  {
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
+
+
         return http.build();
 
 
     }
+
+
 
     @Bean
     public CorsFilter corsFilter() {
@@ -92,13 +104,21 @@ public class WebSecurityConfig  {
 
 
         corsConfiguration.setAllowedOrigins(Collections.singletonList("http://localhost:4200"));
+        corsConfiguration.setAllowedOrigins(Collections.singletonList("http://localhost:8080"));
         //corsConfiguration.setAllowedOriginPatterns(Collections.singletonList("*"));
         corsConfiguration.setAllowedHeaders(Arrays.asList("Origin", "Content-Type", "Accept"));
         corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "OPTIONS", "PATCH"));
         configurationSource.registerCorsConfiguration("/**", corsConfiguration);
         return new CorsFilter(configurationSource);
+
     }
 
+//    @Bean
+//    public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
+//        http.authorizeExchange().anyExchange().permitAll();
+//        return http.build();
+//    }
 
 
 }
+

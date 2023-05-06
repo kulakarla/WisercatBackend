@@ -35,8 +35,7 @@ public class PetController {
     }
 
 
-    //TODO
-    //User specific pet fetching with request header
+
     @GetMapping("/{userName}")
     public ResponseEntity<List<PetDTO>> getUserPets(@PathVariable(name = "userName") String userName){
 
