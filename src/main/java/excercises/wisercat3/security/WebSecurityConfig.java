@@ -104,7 +104,6 @@ public class WebSecurityConfig  {
 
 
         corsConfiguration.setAllowedOrigins(Collections.singletonList("http://localhost:4200"));
-        corsConfiguration.setAllowedOrigins(Collections.singletonList("http://localhost:8080"));
         //corsConfiguration.setAllowedOriginPatterns(Collections.singletonList("*"));
         corsConfiguration.setAllowedHeaders(Arrays.asList("Origin", "Content-Type", "Accept"));
         corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "OPTIONS", "PATCH"));
