@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -98,6 +99,12 @@ public class PetService {
             throw new PetSystemException("Pet details are incorrect");
         }
 
+        if(petsRepository.existsByIdCode(pet.idCode())){
+            if(!petIdCodeExistsIsEditPet(pet)){
+                throw new PetSystemException("Pet ID already taken");
+            }
+        }
+
         Pet petToUpdate = petsRepository.findById(pet.id())
                 .orElseThrow(() -> new PetSystemException("Pet you are trying to update doesn't exist"));
 
@@ -113,16 +120,11 @@ public class PetService {
 
     }
 
-    /*private boolean idCodeExistsButSamePet(PetDTO petDTO) {
-        try {
-            Pet pet = petsRepository.findByIdCode(petDTO.idCode());
-            System.out.println(pet);
+    private boolean petIdCodeExistsIsEditPet(PetDTO petDTO) {
+        Pet pet = petsRepository.findPetByIdCode(petDTO.idCode());
 
+        return Objects.equals(pet.getId(), petDTO.id());
+    }
 
-
-        } catch (PetSystemException e) {
-            return true;
-        }
-    }*/
 }
 

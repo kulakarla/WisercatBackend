@@ -11,6 +11,8 @@ public interface PetsRepository extends JpaRepository<Pet, Integer> {
     List<Pet> findByUser(User user);
     boolean existsByIdCode(String idCode);
 
+    Pet findPetByIdCode(String idCode);
+
     boolean existsByAnimal(String animal);
     boolean existsByCountry(String country);
 }
