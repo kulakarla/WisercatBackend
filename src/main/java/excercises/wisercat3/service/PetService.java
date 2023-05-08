@@ -63,7 +63,7 @@ public class PetService {
         User user = userRepository.findByUsername(userName)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username:" + userName));
 
-        if(!verifyPetDetails(pet) && !petsRepository.existsByIdCode(pet.idCode())){
+        if(!verifyPetDetails(pet) || petsRepository.existsByIdCode(pet.idCode())){
             throw new PetSystemException("Pet details are incorrect");
         }
 
@@ -112,5 +112,17 @@ public class PetService {
 
 
     }
+
+    /*private boolean idCodeExistsButSamePet(PetDTO petDTO) {
+        try {
+            Pet pet = petsRepository.findByIdCode(petDTO.idCode());
+            System.out.println(pet);
+
+
+
+        } catch (PetSystemException e) {
+            return true;
+        }
+    }*/
 }
 

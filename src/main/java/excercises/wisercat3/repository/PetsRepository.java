@@ -9,7 +9,6 @@ import java.util.List;
 public interface PetsRepository extends JpaRepository<Pet, Integer> {
 
     List<Pet> findByUser(User user);
-
     boolean existsByIdCode(String idCode);
 
     boolean existsByAnimal(String animal);
