@@ -1,17 +1,11 @@
 package excercises.wisercat3.dto;
 
 
-import excercises.wisercat3.model.User;
-import excercises.wisercat3.model.Pet;
-import jakarta.persistence.*;
-
-import java.util.UUID;
-
 public record PetDTO (
 
         Integer id,
 
-        UUID id_code,
+        String idCode,
 
         String name,
 
@@ -24,4 +18,32 @@ public record PetDTO (
 
 ){
 
+    @Override
+    public Integer id() {
+        return id;
+    }
+
+    public String idCode() {
+        return idCode;
+    }
+
+    @Override
+    public String name() {
+        return name;
+    }
+
+    @Override
+    public String animal() {
+        return animal;
+    }
+
+    @Override
+    public String color() {
+        return color;
+    }
+
+    @Override
+    public String country() {
+        return country;
+    }
 }

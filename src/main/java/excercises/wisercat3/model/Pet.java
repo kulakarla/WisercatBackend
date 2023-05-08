@@ -2,8 +2,6 @@ package excercises.wisercat3.model;
 
 import jakarta.persistence.*;
 
-import java.util.UUID;
-
 @Entity
 @Table(name = "PETS")
 public class Pet {
@@ -12,8 +10,10 @@ public class Pet {
     @Column(name = "ID", nullable = false)
     private Integer id;
 
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id_code;
+    /*@GeneratedValue(strategy = GenerationType.UUID)
+    private UUID idCode;*/
+
+    private String idCode;
 
     @Column(name = "NAME", length = 100)
     private String name;
@@ -25,6 +25,18 @@ public class Pet {
 
     private String country;
 
+    public Pet(Integer id, String idCode, String name, String animal, String color, String country, User user) {
+        this.id = id;
+        this.idCode = idCode;
+        this.name = name;
+        this.animal = animal;
+        this.color = color;
+        this.country = country;
+        this.user = user;
+    }
+
+    public Pet(){}
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_ID")
     private User user;
@@ -35,14 +47,6 @@ public class Pet {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public UUID getId_code() {
-        return id_code;
-    }
-
-    public void setId_code(UUID id_code) {
-        this.id_code = id_code;
     }
 
     public String getName() {
@@ -70,7 +74,27 @@ public class Pet {
         return color;
     }
 
+    public void setIdCode(String idCode) {
+        this.idCode = idCode;
+    }
+
+    public void setAnimal(String animal) {
+        this.animal = animal;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
     public String getCountry() {
         return country;
+    }
+
+    public String getIdCode() {
+        return idCode;
     }
 }

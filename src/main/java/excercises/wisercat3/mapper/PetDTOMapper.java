@@ -13,7 +13,7 @@ public class PetDTOMapper implements Function<Pet, PetDTO> {
     public PetDTO apply(Pet pet) {
         return new PetDTO(
                 pet.getId(),
-                pet.getId_code(),
+                pet.getIdCode(),
                 pet.getName(),
                 pet.getAnimal(),
                 pet.getColor(),

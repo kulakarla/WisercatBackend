@@ -5,6 +5,11 @@ import excercises.wisercat3.payload.LoginRequest;
 import excercises.wisercat3.repository.UserRepository;
 import excercises.wisercat3.security.jwt.JwtUtils;
 import excercises.wisercat3.service.UserDetailsImpl;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
@@ -35,6 +40,14 @@ public class AuthController {
     @Autowired
     JwtUtils jwtUtils;
 
+
+    @Operation(summary = "Log in an user")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "401", description = "Bad credentials",
+        content = @Content),
+        @ApiResponse(responseCode = "200", description = "Successfully authenticated",
+        content = @Content(mediaType = "text"))
+    })
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest){
 
@@ -51,6 +64,10 @@ public class AuthController {
                 .body(userDetails.getUsername());
     }
 
+
+    @Operation(summary = "Log out an user")
+    @ApiResponse(responseCode = "200", description = "User successfully logged out",
+    content = @Content(mediaType = "text"))
     @PostMapping("/logout")
     public ResponseEntity<?> logoutUser() {
         ResponseCookie cookie = jwtUtils.getCleanJwtCookie();
