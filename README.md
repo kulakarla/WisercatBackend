@@ -5,16 +5,16 @@
 
 Clone repository<br>
 
-``
+
     git clone https://github.com/kulakarla/WisercatFrotend.git
-``
+
 
 Install dependecies
 
 
-``
+
     npm install
-``
+
 
 #### Run Application
 
@@ -25,9 +25,9 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 Clone repository
 
-``
+
     git clone https://github.com/kulakarla/WisercatBackend.git
-``
+
 
 #### Run API
 
@@ -38,7 +38,9 @@ Download the application. Navigate to `src/main/java/excercises/wisercat3/Wiserc
 
 ## API Documentation
 
-API Documentation can be found at `http://localhost:8080/swagger-ui/index.html`
+API Documentation can be found at
+
+    http://localhost:8080/swagger-ui/index.html
 
 ## Main Framework Versions
 
@@ -55,6 +57,19 @@ Users can enter their pet id codes themselves, however, they must be exactly 8 d
 Every pet id code must be unique, the user must enter a new one if their desired one already exists
 Pet name can be any string of length 1
 Pet type (animal), fur color and country can only be predefined values from the database, user cannot
+
+## Test Accounts
+
+
+    username: Petlover321
+    password: verysafepassword
+
+    username: turtleDude
+    password: lighter481
+
+    username: skipper2
+    password: stone25
+
 
 
 
