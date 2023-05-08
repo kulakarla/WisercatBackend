@@ -44,9 +44,9 @@ API Documentation can be found at
 
 ## Main Framework Versions
 
-Angular CLI version 16.0.0
-Bootstrap version 5.2.3
-SpringBoot version 3.0.6
+Angular CLI version 16.0.0 <br>
+Bootstrap version 5.2.3 <br>
+SpringBoot version 3.0.6 <br>
 
 + additional libraries and dependecies.
 
