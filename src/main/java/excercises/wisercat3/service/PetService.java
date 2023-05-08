@@ -126,5 +126,15 @@ public class PetService {
         return Objects.equals(pet.getId(), petDTO.id());
     }
 
+    public void deletePet(String userName, Integer id) {
+        User user = userRepository.findByUsername(userName)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + userName));
+
+        Pet pet = petsRepository.findById(id)
+                    .orElseThrow(() -> new PetSystemException("Pet not found with id: " + id));
+
+        petsRepository.deleteById(id);
+
+    }
 }
 

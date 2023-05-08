@@ -128,4 +128,29 @@ public class PetController {
             );
         }
     }
+
+
+    @Operation(summary = "Deleting a pet")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Pet successfully deleted",
+            content = @Content),
+            @ApiResponse(responseCode = "404", description = "User not found",
+            content = @Content),
+            @ApiResponse(responseCode = "404", description = "Pet not found",
+            content = @Content)
+
+    })
+    @DeleteMapping("/{userName}/delete/{id}")
+    public ResponseEntity<?>deletePet(@PathVariable(name ="userName") String userName, @PathVariable Integer id) {
+        try {
+            System.out.println(userName);
+            System.out.println(id);
+            petService.deletePet(userName, id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (UsernameNotFoundException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found", e);
+        } catch (PetSystemException p) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Pet not found", p);
+        }
+    }
 }

@@ -102,21 +102,18 @@ public class WebSecurityConfig  {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowCredentials(true);
 
-
         corsConfiguration.setAllowedOrigins(Collections.singletonList("http://localhost:4200"));
+
+        //REMOVE THIS IF CORS ERRORS PERSIST
+
         //corsConfiguration.setAllowedOriginPatterns(Collections.singletonList("*"));
         corsConfiguration.setAllowedHeaders(Arrays.asList("Origin", "Content-Type", "Accept"));
-        corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "OPTIONS", "PATCH"));
+        corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "OPTIONS", "PATCH", "DELETE"));
         configurationSource.registerCorsConfiguration("/**", corsConfiguration);
         return new CorsFilter(configurationSource);
 
     }
 
-//    @Bean
-//    public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
-//        http.authorizeExchange().anyExchange().permitAll();
-//        return http.build();
-//    }
 
 
 }
